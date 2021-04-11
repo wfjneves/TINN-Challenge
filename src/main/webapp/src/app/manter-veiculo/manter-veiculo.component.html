@@ -1,0 +1,53 @@
+<form [formGroup]="veiculoForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>{{id ? 'Atualizar Veículo' : 'Cadastar Veículo'}} </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Modelo" formControlName="veiculo">
+            <mat-error *ngIf="veiculoForm.controls['veiculo'].hasError('required')">
+              O campo Modelo é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Marca" formControlName="marca">
+            <mat-error *ngIf="veiculoForm.controls['marca'].hasError('required')">
+              O campo Marca é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #ano type="number" placeholder="Ano" formControlName="ano" minlength="4" max="4"  >            
+            <mat-error  *ngIf="veiculoForm.controls['ano'].hasError('required')">
+              O campo Ano é <strong>obrigatório</strong>
+            </mat-error>
+            <mat-hint align="end">{{ano.value.length}} / 4</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Descrição" formControlName="descricao"></textarea>
+            <mat-error *ngIf="veiculoForm.controls['descricao'].hasError('required')">
+              O campo Descrição é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" [disabled]="veiculoForm.invalid" type="submit">Salvar</button>
+        &nbsp;
+      <button mat-raised-button color="warn" [routerLink]="['']" >Voltar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -41,7 +41,8 @@ build/
 /bazel-out
 
 # dependencies
-/node_modules
+/src/main/webapp/node_modules
+/src/main/webapp/package-lock.json
 
 # profiling files
 chrome-profiler-events*.json
@@ -77,4 +78,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
