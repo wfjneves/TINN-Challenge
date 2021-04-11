@@ -1,8 +1,8 @@
 # TINN-Challenge
 
 * [Tecnologias necessárias](#tecnologias-utilizadas)
-* [1 Votos Em relação ao total de eleitores](#exercicio1)
-* [2 Algoritimo de ordenação Bubble Sort](#exercicio2)
+* [1 Votos Em relação ao total de eleitores](#exercicio-1)
+* [2 Algoritimo de ordenação Bubble Sort](#exercicio-2)
  
  
  ## Tecnologias Utilizadas
@@ -11,7 +11,7 @@
  * Maven 3.6.3+
  
  
- ## Exercicio1
+ ## Exercicio 1
  
 
   Considerando a tabela abaixo...
@@ -35,7 +35,7 @@
   https://github.com/wfjneves/TINN-Challenge/blob/master/src/main/java/neves/jesus/felipe/wesley/TINNChallenge/exercicio1/CalculadoraEleitoral.java
   https://github.com/wfjneves/TINN-Challenge/blob/master/src/test/java/neves/jesus/felipe/wesley/TINNChallenge/exerccicio1/CalculadoraEleitoralTest.java
   
- ## Exercicio2
+ ## Exercicio 2
  
  Algoritimo de ordenação Bubble Sort
  
