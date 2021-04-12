@@ -2,6 +2,8 @@ package neves.jesus.felipe.wesley.TINNChallenge.model;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -16,25 +18,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(value = Include.NON_NULL)
-public class VeiculoDto {
+public class FiltroVeiculoDto {
 
-	public VeiculoDto(String veiculo, String marca, int ano, String descricao, boolean vendido) {
-		this.veiculo = veiculo;
-		this.marca = marca;
-		this.ano = ano;
-		this.descricao = descricao;
-		this.vendido = vendido;
-	}
-
-	private Long id;
 	private String veiculo;
 	private String marca;
 	private Integer ano;
 	private String descricao;
 	private boolean vendido;
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDate created;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private LocalDate dataInicioCriacao;
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDate updated;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private LocalDate dataFinalCriacao;
 
 }

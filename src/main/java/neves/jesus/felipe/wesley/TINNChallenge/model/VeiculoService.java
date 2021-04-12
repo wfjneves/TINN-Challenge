@@ -1,14 +1,18 @@
 package neves.jesus.felipe.wesley.TINNChallenge.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import neves.jesus.felipe.wesley.TINNChallenge.exception.MarcaException;
 import neves.jesus.felipe.wesley.TINNChallenge.exception.VeiculoNotFoundException;
 import neves.jesus.felipe.wesley.TINNChallenge.mapper.VeiculoMapper;
+import neves.jesus.felipe.wesley.TINNChallenge.model.entity.Veiculo;
+import neves.jesus.felipe.wesley.TINNChallenge.model.repository.VeiculoRepository;
 
 @Service
 public class VeiculoService {
@@ -30,9 +34,9 @@ public class VeiculoService {
 			throw new MarcaException();
 		}
 		if (veiculo.getId() == null) {
-			veiculo.setCreated(LocalDateTime.now());
+			veiculo.setCreated(LocalDate.now());
 		} else {
-			veiculo.setUpdated(LocalDateTime.now());
+			veiculo.setUpdated(LocalDate.now());
 			veiculo.setCreated(findByIdInternal(veiculo.getId()).getCreated());
 		}
 		Veiculo veiculoSalvo = veiculoRepository.save(veiculo);
@@ -60,11 +64,8 @@ public class VeiculoService {
 		carro.setVendido(dto.isStatusDeVenda());
 		this.saveInternal(carro);
 	}
-
-//	fazer testes unitário da api
-//	fazer query sem paginação para retornar veiculos por ano, por statusvenda, marca, data criação
-//	criar uma interface no angular para listar os veiculos com um botão para vender / cancelar venda, com um botão para excluir, um botão para redirecionar para tela de edição.
-//	criar uma interface no angular para cadastrar e editar veiculo
-//	não usar autenticação
-
+	
+	public Page<VeiculoDto> findVeiculos(FiltroVeiculoDto filtro, Pageable pageable) {
+		return veiculoRepository.findVeiculos(filtro, pageable);
+	}
 }
