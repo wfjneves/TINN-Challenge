@@ -138,3 +138,12 @@ No arquivo <strong>TINNOVA.postman_collection.json</strong> tem exemplos de requ
 
 ### Link para testar a aplicação
 http://localhost:4200
+
+
+## Teste de Integração da API
+
+Após o backend está rodando, em sua IDE execute a classe VeiculoControllerTest.
+
+### Link para classe aqui
+
+https://github.com/wfjneves/TINN-Challenge/blob/master/src/test/java/neves/jesus/felipe/wesley/TINNChallenge/controller/VeiculoControllerTest.java
