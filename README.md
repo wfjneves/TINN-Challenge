@@ -101,37 +101,6 @@
 Criar uma aplicação back-end (Java ou NodeJS) basaada em web services usando JSON.
 Deverá haver um front-end em modo Single Page Application que se comunique com os serviços criados no back-end.
 
-# Back-End
-
- <p> <code>$ mvn clean install</code>  </p>
- <p><code>$ java -jar ./target/TINN-Challenge-0.0.1-SNAPSHOT.jar </code> </p>
- 
- # Link para testar API
- 
- http://localhost:8181/veiculos
-
-No arquivo <strong>TINNOVA.postman_collection.json</strong> tem exemplos de requisições para os endpoint da API.
-
-# Front-End
-
-<p><code>$ cd  ./src/main/webapp/ </code></p>
-<p><code>npm install</code></p>
-<p><code>ng serve</code></p>
-
-# Link para testar a aplicação
-http://localhost:4200
-
-Requisitos:
- 
-  * Permitir o cadastro de veículos
-  *  Permitir a atualização de dados de um veículo
-  *  Permitir a exclusão de um veículo
-  *  Exibir a informação de quantos veículos estão como não vendidos na base.
-  *  Exibir a informação da distribuição de veículos por década de fabricação
-  *  Exibir a informação da distribuição de veículos por fabricantes
-  *  Exibir os carros registrados durante a última semana
-  *  Deverá haver consistência das marcas fornecidas. Não poderá haver marcas escritas de forma errada
-
 ## Missão
 
 Desenvolver uma API JSON RESTful, que utilize todos os métodos (GET, POST, PUT, PATCH, DELETE). Faça o teste unitário da API
@@ -148,5 +117,24 @@ Monte uma base de veículo com a seguinte estrutura:
 <p><code>created: datetime</code></p>
 <p><code>updated: datetime</code></p>
 
+# Para executar esse exercício siga os passos abaixo
 
-## API endpoints
+## Back-End
+
+ <p> <code>$ mvn clean install</code>  </p>
+ <p><code>$ java -jar ./target/TINN-Challenge-0.0.1-SNAPSHOT.jar </code> </p>
+ 
+ ### Link para testar API
+ 
+ http://localhost:8181/veiculos
+
+No arquivo <strong>TINNOVA.postman_collection.json</strong> tem exemplos de requisições para os endpoint da API.
+
+## Front-End
+
+<p><code>$ cd  ./src/main/webapp/ </code></p>
+<p><code>npm install</code></p>
+<p><code>ng serve</code></p>
+
+### Link para testar a aplicação
+http://localhost:4200
