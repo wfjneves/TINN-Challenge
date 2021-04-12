@@ -91,7 +91,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"veiculo\": \"WR-V\",\r\n    \"marca\": \"Honda\",\r\n    \"ano\": 2021,\r\n    \"descricao\": \"CARRO ULTRA POWER PUTARIA2\",\r\n    \"vendido\": false,\r\n    \"created\": \"2021-04-07T18:54:33.881\",\r\n    \"updated\": \"2021-04-07T18:56:46.79\"\r\n}",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"veiculo\": \"WR-V\",\r\n    \"marca\": \"Honda\",\r\n    \"ano\": 2021,\r\n    \"descricao\": \"CARRO ULTRA POWER PUTARIA2\",\r\n    \"vendido\": false  \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -157,6 +157,54 @@
 					"path": [
 						"veiculos",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND paginado com filtro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/veiculos/find?ano=2021&dataInicioCriacao=12/04/2021&size=5&page=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"veiculos",
+						"find"
+					],
+					"query": [
+						{
+							"key": "marca",
+							"value": "Honda",
+							"disabled": true
+						},
+						{
+							"key": "veiculo",
+							"value": "FIT",
+							"disabled": true
+						},
+						{
+							"key": "ano",
+							"value": "2021"
+						},
+						{
+							"key": "dataInicioCriacao",
+							"value": "12/04/2021"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						}
 					]
 				}
 			},
