@@ -12,6 +12,9 @@
  
  * Java 1.8
  * Maven 3.6.3+
+ * Npm 6.14.11
+ * Angular CLI 11.2.6
+ * Node 14.16.0
  
  
  ## Exercicio 1
@@ -98,6 +101,26 @@
 Criar uma aplicação back-end (Java ou NodeJS) basaada em web services usando JSON.
 Deverá haver um front-end em modo Single Page Application que se comunique com os serviços criados no back-end.
 
+# Back-End
+
+ <p> <code>$ mvn clean install</code>  </p>
+ <p><code>$ java -jar ./target/TINN-Challenge-0.0.1-SNAPSHOT.jar </code> </p>
+ 
+ # Link para testar API
+ 
+ http://localhost:8181/veiculos
+
+No arquivo <strong>TINNOVA.postman_collection.json</strong> tem exemplos de requisições para os endpoint da API.
+
+# Front-End
+
+<p><code>$ cd  ./src/main/webapp/ </code></p>
+<p><code>npm install</code></p>
+<p><code>ng serve</code></p>
+
+# Link para testar a aplicação
+http://localhost:4200
+
 Requisitos:
  
   * Permitir o cadastro de veículos
@@ -116,13 +139,14 @@ Desenvolver uma API JSON RESTful, que utilize todos os métodos (GET, POST, PUT,
 ## Especificação
 
 Monte uma base de veículo com a seguinte estrutura:
-` veiculo: string
-  marca: string
-  ano: integer
-  descricao: text
-  vendido: bool
-  created: datetime
-  updated: datetime
-`
+
+<p><code>veiculo: string</code></p>
+<p><code>marca: string</code></p>
+<p><code>ano: integer</code></p>
+<p><code>descricao: text</code></p>
+<p><code>vendido: bool</code></p>
+<p><code>created: datetime</code></p>
+<p><code>updated: datetime</code></p>
+
 
 ## API endpoints
