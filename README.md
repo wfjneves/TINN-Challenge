@@ -5,6 +5,7 @@
 * [2 Algoritimo de ordenação Bubble Sort](#exercicio-2)
 * [3 Fatorial](#exercicio-3)
 * [4 Soma dos múltiplos de 3 ou 5](#exercicio-4)
+* [5 Cadastro de veículos](#exercicio-5)
  
  
  ## Tecnologias Utilizadas
@@ -92,3 +93,36 @@
  https://github.com/wfjneves/TINN-Challenge/blob/master/src/test/java/neves/jesus/felipe/wesley/TINNChallenge/exerccicio4/SomaMultiplosTest.java
  
  
+## Exercicio 5
+
+Criar uma aplicação back-end (Java ou NodeJS) basaada em web services usando JSON.
+Deverá haver um front-end em modo Single Page Application que se comunique com os serviços criados no back-end.
+
+Requisitos:
+ 
+  * Permitir o cadastro de veículos
+  *  Permitir a atualização de dados de um veículo
+  *  Permitir a exclusão de um veículo
+  *  Exibir a informação de quantos veículos estão como não vendidos na base.
+  *  Exibir a informação da distribuição de veículos por década de fabricação
+  *  Exibir a informação da distribuição de veículos por fabricantes
+  *  Exibir os carros registrados durante a última semana
+  *  Deverá haver consistência das marcas fornecidas. Não poderá haver marcas escritas de forma errada
+
+## Missão
+
+Desenvolver uma API JSON RESTful, que utilize todos os métodos (GET, POST, PUT, PATCH, DELETE). Faça o teste unitário da API
+
+## Especificação
+
+Monte uma base de veículo com a seguinte estrutura:
+` veiculo: string
+  marca: string
+  ano: integer
+  descricao: text
+  vendido: bool
+  created: datetime
+  updated: datetime
+`
+
+## API endpoints
