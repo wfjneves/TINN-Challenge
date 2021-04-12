@@ -1,6 +1,6 @@
 # TINN-Challenge
 
-* [Tecnologias necessárias](#tecnologias-utilizadas)
+* [Tecnologias utilizadas](#tecnologias-utilizadas)
 * [1 Votos Em relação ao total de eleitores](#exercicio-1)
 * [2 Algoritimo de ordenação Bubble Sort](#exercicio-2)
 * [3 Fatorial](#exercicio-3)
