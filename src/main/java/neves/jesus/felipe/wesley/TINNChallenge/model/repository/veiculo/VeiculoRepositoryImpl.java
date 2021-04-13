@@ -37,6 +37,14 @@ public class VeiculoRepositoryImpl implements VeiculoRepositoryQuery {
 
 		Predicate[] restricoes = criarRestricoes(filtro, root, builder);
 		criteria.where(restricoes);
+		
+		pageable.getSort().forEach(o -> {
+			if (o.getDirection().isAscending()) {
+				criteria.orderBy(builder.asc(root.get(o.getProperty())));
+			}else {
+				criteria.orderBy(builder.desc(root.get(o.getProperty())));
+			}
+		});
 
 		TypedQuery<VeiculoDto> typedQuery = manager.createQuery(criteria);
 		adicionarPaginacao(pageable, typedQuery);
