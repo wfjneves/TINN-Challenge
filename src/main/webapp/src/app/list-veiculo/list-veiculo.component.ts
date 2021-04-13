@@ -18,6 +18,7 @@ export class ListVeiculoComponent implements AfterViewInit {
   @ViewChild(MatTable) table!: MatTable<ListVeiculoItem>;
   dataSource: ListVeiculoDataSource;
   veiculo: ListVeiculoItem = {} as ListVeiculoItem;
+  filtro: any = {};
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['veiculo', 'marca', 'ano', 'vendido', 'acoes'];
@@ -29,7 +30,7 @@ export class ListVeiculoComponent implements AfterViewInit {
   excluir(idUsuario: number){
     if(confirm("Deseja realmente excluir o veiculo?")){
       this.veiculoService.excluir(idUsuario).subscribe(obj => {
-        this.dataSource.consultar();
+        this.dataSource.consultar(this.filtro);
       })
     }
   }
@@ -37,7 +38,7 @@ export class ListVeiculoComponent implements AfterViewInit {
   atualizarStatusDeVenda(idUsuario: number, status: boolean){
     var statusVendaDto: StatusVendaCarroDto = { id: idUsuario, statusDeVenda: status };
     this.veiculoService.atualizarStatusDeVenda(statusVendaDto).subscribe(obj => {
-      this.dataSource.consultar();
+      this.dataSource.consultar(this.filtro);
     });
   }
 
@@ -53,14 +54,17 @@ export class ListVeiculoComponent implements AfterViewInit {
       alert("Veiculo atualizado com sucesso");
     });
   }
-  
-  editar(veiculo: ListVeiculoItem){
-    console.log("Você clicou em editar "+JSON.stringify(veiculo));
-  }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+    this.paginator.page.subscribe(() => {
+      this.dataSource.consultar({});
+    })
+    this.sort.sortChange.subscribe(() => {
+      this.dataSource.consultar({});
+    });
+    this.dataSource.consultar({});
   }
 }

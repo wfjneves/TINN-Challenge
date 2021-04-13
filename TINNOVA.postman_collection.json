@@ -168,7 +168,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8181/veiculos/find?ano=2021&dataInicioCriacao=12/04/2021&size=5&page=2",
+					"raw": "http://localhost:8181/veiculos/find?sort=veiculo,marca",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -191,19 +191,27 @@
 						},
 						{
 							"key": "ano",
-							"value": "2021"
+							"value": "2021",
+							"disabled": true
 						},
 						{
 							"key": "dataInicioCriacao",
-							"value": "12/04/2021"
+							"value": "12/04/2021",
+							"disabled": true
 						},
 						{
 							"key": "size",
-							"value": "5"
+							"value": "5",
+							"disabled": true
 						},
 						{
 							"key": "page",
-							"value": "2"
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "veiculo,marca"
 						}
 					]
 				}
