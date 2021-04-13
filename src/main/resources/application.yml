@@ -1,7 +1,2 @@
 server:
   port: 8181
-marca:
-  invalida: 'marca informada é inválida!'
-veiculo:
-  nao:
-    encontrado: 'Veiculo não cadastado!'
