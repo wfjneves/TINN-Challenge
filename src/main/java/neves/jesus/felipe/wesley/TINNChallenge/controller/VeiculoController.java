@@ -37,7 +37,6 @@ public class VeiculoController {
 	
 	@GetMapping(path = "/find")
 	public Page<VeiculoDto> findVeiculos(FiltroVeiculoDto dto, Pageable pageable){
-		System.out.println(dto);
 		return veiculoService.findVeiculos(dto, pageable);
 	}
 
