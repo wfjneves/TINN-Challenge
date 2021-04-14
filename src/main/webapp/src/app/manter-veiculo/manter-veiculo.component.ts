@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ListVeiculoItem } from './../list-veiculo-item';
 import { VeiculoService } from './../veiculo.service';
 
@@ -18,15 +20,15 @@ export class ManterVeiculoComponent {
     descricao: [null, Validators.required],
     vendido: [false, null]
   });
+  mensagemError: string = '';
 
-  constructor(private fb: FormBuilder, private veiculoService: VeiculoService, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private veiculoService: VeiculoService, private route: ActivatedRoute, private roteador: Router) {
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log("ID=> "+this.id);
     if (this.id) {
       this.veiculoService.getById(this.id).subscribe((veiculo) => {
         this.veiculoForm.controls.veiculo.setValue(veiculo.veiculo);
         this.veiculoForm.controls.marca.setValue(veiculo.marca);
-        this.veiculoForm.controls.descricao.setValue(veiculo.marca);
+        this.veiculoForm.controls.descricao.setValue(veiculo.descricao);
         this.veiculoForm.controls.ano.setValue(veiculo.ano);
         this.veiculoForm.controls.vendido.setValue(veiculo.vendido);
       })
@@ -43,16 +45,33 @@ export class ManterVeiculoComponent {
      };
      if (this.id) {
        newVeiculo.id = this.id;
-       this.veiculoService.atualizar(newVeiculo).subscribe((obj )=>{
-         alert('Veiculo atualizado com sucesso!');
-       })
+       this.veiculoService.atualizar(newVeiculo).pipe(catchError(this.handleErrorObject('veiculoService.cadastrar')))
+       .subscribe((obj )=>{
+         if (obj.id) {
+           alert('Veiculo atualizado com sucesso!');
+         }
+       });
       }else{
-        this.veiculoService.cadastrar(newVeiculo).subscribe((obj)=>{
+        this.veiculoService.cadastrar(newVeiculo).pipe(catchError(this.handleErrorObject('veiculoService.atualizar')))
+        .subscribe((obj)=>{
           this.id = obj.id;
-          alert('Veiculo cadastrado com sucesso!');
-        })
+          if (obj.id) {
+            alert('Veiculo cadastrado com sucesso!');
+            this.roteador.navigate(['/manter-veiculo',obj.id]);
+          }
+        });
 
      }  
+    
+  }
+  
+  handleErrorObject(operation= 'operation'){
+    return (error: any): Observable<ListVeiculoItem> =>{
+      if (error.status === 400 || error.status ===404 ) {
+        this.mensagemError = error.error;
+      }
+      return of({ id: null, veiculo: '', marca: '', ano: null, descricao: '', vendido: false, created: ''  }); 
+    }
     
   }
 }
