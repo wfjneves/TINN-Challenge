@@ -38,7 +38,6 @@ export class ListVeiculoDataSource extends DataSource<ListVeiculoItem> {
    * @returns A stream of the items to be rendered.
    */
   connect(): Observable<ListVeiculoItem[]> {
-    console.log('connect 1')
     return this.data.asObservable();
   }
 

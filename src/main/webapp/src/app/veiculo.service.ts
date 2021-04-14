@@ -41,11 +41,13 @@ export class VeiculoService {
     }
 
     if (filtro.dataInicioCriacao) {
-      params = params.set('dataInicioCriacao', filtro.dataInicioCriacao);
+      var dataInicioCriacao  = JSON.stringify(filtro.dataInicioCriacao).split("T")[0];
+      params = params.set('dataInicioCriacao',   dataInicioCriacao.replace('"', ''));
     }
 
     if (filtro.dataFinalCriacao) {
-        params = params.set('dataFinalCriacao', filtro.dataFinalCriacao);
+      var dataFinalCriacao = JSON.stringify(filtro.dataFinalCriacao).split("T")[0];
+        params = params.set('dataFinalCriacao', dataFinalCriacao.replace('"',''));
     }
 
     let options = {
@@ -68,11 +70,11 @@ export class VeiculoService {
   }
   
   cadastrar(veiculo: ListVeiculoItem): Observable<ListVeiculoItem> {
-    return  this.http.post<ListVeiculoItem>("http://localhost:8181/veiculos", JSON.stringify(veiculo), this.getOptions()).pipe(catchError(this.handleErrorObject('veiculoService.cadastrar')));
+    return  this.http.post<ListVeiculoItem>("http://localhost:8181/veiculos", JSON.stringify(veiculo), this.getOptions());
   }
   
    atualizar(veiculo: ListVeiculoItem): Observable<ListVeiculoItem> {
-    return  this.http.put<ListVeiculoItem>("http://localhost:8181/veiculos/"+veiculo.id, JSON.stringify(veiculo), this.getOptions()).pipe(catchError(this.handleErrorObject('veiculoService.atualizar')));
+    return  this.http.put<ListVeiculoItem>("http://localhost:8181/veiculos/"+veiculo.id, JSON.stringify(veiculo), this.getOptions());
   }
  
 
@@ -85,14 +87,6 @@ export class VeiculoService {
 
   }
 
-handleErrorObject(operation= 'operation'){
-    return (error: any): Observable<ListVeiculoItem> =>{
-      console.error("Ao excecutar a operacao = "+ operation+ " Aconteceu esse error: "+ JSON.stringify(error));
-      return of({ id: null, veiculo: '', marca: '', ano: null, descricao: '', vendido: false, created: ''  }); 
-    }
-
-  }
-
   getOptions() {
     return  {
 			headers: new HttpHeaders({
@@ -100,4 +94,12 @@ handleErrorObject(operation= 'operation'){
 			})
 		};
   }
+
+  handleErrorObject(operation= 'operation'){
+        return (error: any): Observable<ListVeiculoItem> =>{
+          console.error("Ao excecutar a operacao = "+ operation+ " Aconteceu esse error: "+ JSON.stringify(error));
+          return of({ id: null, veiculo: '', marca: '', ano: null, descricao: '', vendido: false, created: ''  }); 
+        }
+    
+      }
 }

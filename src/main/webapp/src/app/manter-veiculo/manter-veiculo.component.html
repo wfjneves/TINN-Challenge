@@ -1,5 +1,8 @@
 <form [formGroup]="veiculoForm" novalidate (ngSubmit)="onSubmit()">
-  <mat-card class="shipping-card">
+  <div *ngIf="mensagemError" class="msg-validacao-negocio">
+    {{mensagemError}}
+  </div>
+  <mat-card class="manter-veiculo-card">
     <mat-card-header>
       <mat-card-title>{{id ? 'Atualizar Veículo' : 'Cadastar Veículo'}} </mat-card-title>
     </mat-card-header>

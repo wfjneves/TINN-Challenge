@@ -18,7 +18,7 @@ export class ListVeiculoComponent implements AfterViewInit {
   @ViewChild(MatTable) table!: MatTable<ListVeiculoItem>;
   dataSource: ListVeiculoDataSource;
   veiculo: ListVeiculoItem = {} as ListVeiculoItem;
-  filtro: any = {};
+  filtro: any = {};  
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['veiculo', 'marca', 'ano', 'vendido', 'acoes'];
@@ -55,16 +55,26 @@ export class ListVeiculoComponent implements AfterViewInit {
     });
   }
 
+  consultar(){
+    this.dataSource.consultar(this.filtro);
+  }
+
+  limpar(){
+    this.filtro = {};
+    this.consultar();
+  }
+
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.paginator._intl.itemsPerPageLabel="Itens por página";
     this.table.dataSource = this.dataSource;
     this.paginator.page.subscribe(() => {
-      this.dataSource.consultar({});
+      this.consultar();
     })
     this.sort.sortChange.subscribe(() => {
-      this.dataSource.consultar({});
+      this.consultar();
     });
-    this.dataSource.consultar({});
+    this.consultar();
   }
 }
